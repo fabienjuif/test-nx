@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { QUERY_TODOS, ADD_TODO } from '../queries/todos';
 
 const NewTodo = () => {
-  const formRef = useRef();
+  const formRef = useRef(undefined);
   const [addTodo, { loading }] = useMutation(ADD_TODO);
 
   const onSubmit = useCallback(
@@ -27,7 +27,7 @@ const NewTodo = () => {
   useEffect(() => {
     if (loading) return;
     if (!formRef.current) return;
-    formRef.current.reset(); // FIXME: WHYYYYYY
+    formRef.current.reset();
   }, [formRef, loading]);
 
   return (
